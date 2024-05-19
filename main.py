@@ -2,6 +2,8 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 import pandas as pd
+
+from lstm.LSTMModel import LSTMModel
 from variables import variables
 
 from respiration_patterns.Apnea import Apnea
@@ -60,7 +62,12 @@ def show_data():
     plt.show()
 
 
+def predict_with_lstm():
+    lstm = LSTMModel()
+    lstm.run()
+
+
 if __name__ == '__main__':
-    show_data()
+    predict_with_lstm()
 
 

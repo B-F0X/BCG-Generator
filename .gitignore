@@ -8,3 +8,5 @@
 /dataSources.local.xml
 .idea
 /variables/variables.py
+/lstm/models/*.h5
+/lstm/models/*.keras
