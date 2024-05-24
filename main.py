@@ -3,6 +3,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import pandas as pd
 
+from data_extractor.DataExtractor import DataExtractor
 from lstm.LSTMModel import LSTMModel
 from variables import variables
 
@@ -63,7 +64,9 @@ def show_data():
 
 
 def predict_with_lstm():
-    lstm = LSTMModel()
+    data_extractor = DataExtractor()
+    data_extractor.get_data_from_combined_files(variables.path_to_combined_files)
+    lstm = LSTMModel(data_extractor)
     lstm.run()
 
 
