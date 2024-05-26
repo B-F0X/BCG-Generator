@@ -43,6 +43,7 @@ class RespirationPattern:
         time_in_sec = int(len(wave) / 1000 * 60)
         time = np.linspace(0, time_in_sec, len(wave))
         plt.plot(time, wave)
+        plt.ylim(-2.5, 2.5)
         plt.title("Sine Wave with Smooth Random Amplitude Variation")
         plt.xlabel("Time (seconds)")
         plt.ylabel("Amplitude")

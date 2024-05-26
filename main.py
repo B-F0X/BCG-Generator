@@ -3,6 +3,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import pandas as pd
 
+from cnn.CNNModel import CNNModel
 from data_extractor.DataExtractor import DataExtractor
 from lstm.LSTMModel import LSTMModel
 from variables import variables
@@ -20,27 +21,45 @@ from wave_connector.WaveConnector import WaveConnector
 
 
 def show_connected_waves():
-    normal = Normal(time=15)
-    apnea = Apnea(time=15)
-    bradypnea = Bradypnea(time=15)
-    cheyne_strokes = CheyneStokes()
-    kussmaul = Kussmaul(time=10)
-    tachypnea = Tachypnea(time=10)
-    hyperpnea = Hyperpnea(time=15)
+    #normal = Normal(time=15)
+    #apnea = Apnea(time=15)
+    bradypnea = Bradypnea(time=30)
+    #cheyne_strokes = CheyneStokes()
+    #kussmaul = Kussmaul(time=10)
+    tachypnea = Tachypnea(time=30)
+    #hyperpnea = Hyperpnea(time=15)
 
     wave_connector = WaveConnector()
-    connected_waves = wave_connector.connect([normal, apnea, bradypnea, cheyne_strokes, kussmaul, tachypnea, hyperpnea])
+    connected_waves = wave_connector.connect([bradypnea, tachypnea])
 
     time_in_sec = int(len(connected_waves) / 1000 * 60)
     t1 = np.linspace(0, time_in_sec, len(connected_waves))
     print(len(connected_waves))
     plt.plot(t1, connected_waves)
+    plt.ylim(-2.5, 2.5)
     plt.title("Sine Wave with Smooth Random Amplitude Variation")
     plt.xlabel("Time (seconds)")
     plt.ylabel("Amplitude")
     plt.grid(True)
     plt.show()
 
+def show_one_wave():
+    waves = []
+    waves.append(Normal(time=30))
+    waves.append(Apnea(time=30))
+    waves.append(Bradypnea(time=30))
+    waves.append(CheyneStokes(length_of_cheyne_stokes=20, length_of_apnea=10))
+    waves.append(Kussmaul(time=30))
+    waves.append(Tachypnea(time=30))
+    waves.append(Hyperpnea(time=30))
+
+    Bradypnea(time=30).show()
+
+    #wave_connector = WaveConnector()
+    #connected_waves = wave_connector.connect([normal, apnea, bradypnea, cheyne_strokes, kussmaul, tachypnea, hyperpnea])
+
+    for wave in waves:
+        wave.show()
 
 def show_data():
     respiration = pd.read_csv(variables.path_to_respiration_data + 'resp1.csv')
@@ -66,11 +85,14 @@ def show_data():
 def predict_with_lstm():
     data_extractor = DataExtractor()
     data_extractor.get_data_from_combined_files(variables.path_to_combined_files)
-    lstm = LSTMModel(data_extractor)
-    lstm.run()
+    #lstm = LSTMModel(data_extractor)
+    #lstm.run()
+    cnn = CNNModel(data_extractor)
+    cnn.run()
 
 
 if __name__ == '__main__':
     predict_with_lstm()
+    # show_connected_waves()
 
 

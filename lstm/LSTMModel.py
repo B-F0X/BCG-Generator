@@ -1,3 +1,5 @@
+import time
+
 import numpy as np
 import pandas as pd
 from keras import Sequential
@@ -19,19 +21,18 @@ class LSTMModel:
         self.data_extractor = data_extractor
         self.respiration_data, self.bcg_data = self.data_extractor.get_data()
 
-
     def run(self):
 
         print(f"TensorFlow has access to the following devices:\n{list_physical_devices()}")
         model = None
         try:
-            model = load_model('lstm/models/lstmModel9_less_data.h5')
+            model = load_model('lstm/models/lstmModel11_increased_batch_size.h5')
             print(model.summary())
         except:
             print("Could not load the Model")
 
-        resp_data = self.respiration_data[7]
-        bcg_data = self.bcg_data[7]
+        resp_data = self.respiration_data[0]
+        bcg_data = self.bcg_data[0]
         #for i in range(1, len(self.respiration_data)):
         #    resp_data = np.concatenate((resp_data, self.respiration_data[i]))
         #    bcg_data = np.concatenate((bcg_data, self.bcg_data[i]))
@@ -55,16 +56,22 @@ class LSTMModel:
             model.compile(loss='mean_squared_error', optimizer='adam')
             model.build(shape(resp_train))
             print(model.summary())
-            model.fit(resp_train, bcg_train, epochs=2500, batch_size=2)
+            start = time.time()
+            history = model.fit(resp_train, bcg_train, epochs=500, batch_size=16)
+            end = time.time()
+            training_time = end - start
+            print('The training took ' + str(training_time) + ' seconds')
+            plt.plot(history.history['loss'])
+            plt.show()
 
-            model.save('lstm/models/lstmModel9_less_data.h5')
+            model.save('lstm/models/lstmModel11_increased_batch_size.h5')
 
         test_predict = model.predict(resp_test)
         print(shape(test_predict))
 
         test_predict = test_predict.flatten()
 
-        #plt.plot(bcg_test[0], 'red')
+        plt.plot(bcg_test[0], 'red')
         plt.plot(test_predict, 'blue')
         plt.plot(resp_test[0], 'green')
         plt.title("Sine Wave with Smooth Random Amplitude Variation")
