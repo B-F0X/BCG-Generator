@@ -8,8 +8,8 @@ matplotlib.use('TkAgg')
 class RespirationPattern:
 
     def __init__(self, respiration_rate, time, smoothness, amplitude, sensor_frequency, start):
-        time_in_minutes = time / 60
-        self.x = np.linspace(start, start + time, int(sensor_frequency * time_in_minutes))
+        # time_in_minutes = time / 60
+        self.x = np.linspace(start, start + time, int(sensor_frequency * time))
         self.respiration_rate = respiration_rate / 30
         self.time = time
         self.smoothness = smoothness

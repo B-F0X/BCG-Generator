@@ -3,6 +3,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import pandas as pd
 
+from bcg_generator.BcgGenerator import BcgGenerator
 from cnn.CNNModel import CNNModel
 from data_extractor.DataExtractor import DataExtractor
 from lstm.LSTMModel import LSTMModel
@@ -90,9 +91,15 @@ def predict_with_lstm():
     cnn = CNNModel(data_extractor)
     cnn.run()
 
+def create_heart_beats():
+    kussmaul = Kussmaul(time=10)
+    bcg = BcgGenerator()
+    bcg.show(kussmaul)
+
 
 if __name__ == '__main__':
-    predict_with_lstm()
+    create_heart_beats()
+    # predict_with_lstm()
     # show_connected_waves()
 
 

@@ -10,3 +10,5 @@
 /variables/variables.py
 /lstm/models/*.h5
 /lstm/models/*.keras
+/cnn/models/*.h5
+/cnn/models/*.keras
