@@ -92,9 +92,13 @@ def predict_with_lstm():
     cnn.run()
 
 def create_heart_beats():
-    kussmaul = Kussmaul(time=10)
-    bcg = BcgGenerator()
-    bcg.show(kussmaul)
+    kussmaul = Kussmaul(time=20)
+    bradypnea = Bradypnea(time=20)
+    cheyne_strokes = CheyneStokes()
+    wave_connector = WaveConnector()
+    connected_waves = wave_connector.connect([bradypnea, kussmaul])
+    bcg = BcgGenerator(connected_waves, 80, 1000)
+    bcg.show()
 
 
 if __name__ == '__main__':

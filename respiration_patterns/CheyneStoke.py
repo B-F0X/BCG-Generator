@@ -9,7 +9,7 @@ matplotlib.use('TkAgg')
 
 
 class CheyneStoke(RespirationPattern):
-    def __init__(self, respiration_rate=15, time=40, smoothness=20, amplitude=1.0, sensor_frequency=1000, start=0):
+    def __init__(self, respiration_rate=15, time=40, smoothness=200, amplitude=1.0, sensor_frequency=1000, start=0):
         super().__init__(respiration_rate, time, smoothness, amplitude, sensor_frequency, start)
 
     def get(self):

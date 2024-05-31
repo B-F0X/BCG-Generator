@@ -5,7 +5,7 @@ from respiration_patterns.RespirationPattern import RespirationPattern
 
 class Apnea(RespirationPattern):
 
-    def __init__(self, respiration_rate=0, time=60, smoothness=20, amplitude=0.0, sensor_frequency=1000, start=0):
+    def __init__(self, respiration_rate=0, time=60, smoothness=200, amplitude=0.0, sensor_frequency=1000, start=0):
         super().__init__(respiration_rate, time, smoothness, amplitude, sensor_frequency, start)
 
     def get(self):
