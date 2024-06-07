@@ -9,7 +9,7 @@ matplotlib.use('TkAgg')
 
 
 class CheyneStoke(RespirationPattern):
-    def __init__(self, respiration_rate=15, time=40, smoothness=200, amplitude=1.0, sensor_frequency=1000, start=0):
+    def __init__(self, respiration_rate=15, time=40, smoothness=700, amplitude=1.0, sensor_frequency=1000, start=0):
         super().__init__(respiration_rate, time, smoothness, amplitude, sensor_frequency, start)
 
     def get(self):
@@ -17,7 +17,7 @@ class CheyneStoke(RespirationPattern):
         phi = 0
 
         # Generate Gaussian noise with standard deviation of 0.9
-        noise = np.random.normal(0, 0.9, len(self.x))
+        noise = np.random.normal(0, 6, len(self.x))
 
         # Apply a Gaussian filter to smooth the noise
         smoothed_noise = gaussian_filter1d(noise, self.smoothness)

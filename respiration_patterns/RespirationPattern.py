@@ -24,7 +24,7 @@ class RespirationPattern:
         phi = 0
 
         # Generate Gaussian noise with standard deviation of 0.9
-        noise = np.random.normal(0, 0.9, len(self.x))
+        noise = np.random.normal(0, 6, len(self.x))
 
         # Apply a Gaussian filter to smooth the noise
         smoothed_noise = gaussian_filter1d(noise, self.smoothness)
@@ -36,14 +36,13 @@ class RespirationPattern:
         return amplitude_envelope * self.amplitude * np.sin(self.respiration_rate * np.pi * self.x + phi)
 
     def get_zero_distance(self):
-        return int((1 / self.respiration_rate) * (self.sensor_frequency / 60))
+        return int((1 / self.respiration_rate) * self.sensor_frequency)
 
     def show(self):
         wave = self.get()
         time_in_sec = int(len(wave) / 1000 * 60)
         time = np.linspace(0, time_in_sec, len(wave))
         plt.plot(time, wave)
-        plt.ylim(-2.5, 2.5)
         plt.title("Sine Wave with Smooth Random Amplitude Variation")
         plt.xlabel("Time (seconds)")
         plt.ylabel("Amplitude")

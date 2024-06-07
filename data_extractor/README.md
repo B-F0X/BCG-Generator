@@ -132,46 +132,46 @@
 | resp 39     |       |                                                       |
 | resp 40     |       |                                                       |
 
-## BCG 4
-| Respiration | Delay | Quality                            |
-|-------------|-------|------------------------------------|
-| resp 01     |       |                                    |
-| resp 02     |       |                                    |
-| resp 03     |       |                                    |
-| resp 04     |       |                                    |
-| resp 05     |       |                                    |
-| resp 06     |       |                                    |
-| resp 07     |       |                                    |
-| resp 08     |       |                                    |
-| resp 09     |       |                                    |
-| resp 10     |       |                                    |
-| resp 11     |       |                                    |
-| resp 12     |       |                                    |
-| resp 13     |       |                                    |
-| resp 14     |       |                                    |
-| resp 15     |       |                                    |
-| resp 16     |       |                                    |
-| resp 17     |       |                                    |
-| resp 18     |       |                                    |
-| resp 19     |       |                                    |
-| resp 20     |       |                                    |
-| resp 21     |       |                                    |
-| resp 22     |       |                                    |
-| resp 23     |       |                                    |
-| resp 24     |       |                                    |
-| resp 25     |       |                                    |
-| resp 26     |       |                                    |
-| resp 27     |       |                                    |
-| resp 28     |       |                                    |
-| resp 29     |       |                                    |
-| resp 30     |       |                                    |
-| resp 31     |       |                                    |
-| resp 32     |       |                                    |
-| resp 33     |       |                                    |
-| resp 34     |       |                                    |
-| resp 35     |       |                                    |
-| resp 36     |       |                                    |
-| resp 37     |       |                                    |
-| resp 38     |       |                                    |
-| resp 39     |       |                                    |
-| resp 40     |       |                                    |
+## Respiration patterns
+| Respiration | Delay | Quality                                                                                                                      |
+|-------------|-------|------------------------------------------------------------------------------------------------------------------------------|
+| resp 01     |       | Normal until 80k, then low amplitude until 110k                                                                              |
+| resp 02     |       | Hugh Amplitude and low frequency until 220k normal amplitude and high frequency from 330k                                    |
+| resp 03     |       | Not good                                                                                                                     |
+| resp 04     |       | -                                                                                                                            |
+| resp 05     |       | normal frequency, amplitude varies seemingly random                                                                          |
+| resp 06     |       | not good                                                                                                                     |
+| resp 07     |       | Normal respiration from 50k to 250k                                                                                          |
+| resp 08     |       | Low amplitude and high frequency for the most part, switching to normal respiration between: 100k-120k, 160k-195k, 237k-248k |
+| resp 09     |       | not good                                                                                                                     |
+| resp 10     |       | not good                                                                                                                     |
+| resp 11     |       | not good                                                                                                                     |
+| resp 12     |       | not good                                                                                                                     |
+| resp 13     |       | clean normal respiration                                                                                                     |
+| resp 14     |       | not good                                                                                                                     |
+| resp 15     |       | not good                                                                                                                     |
+| resp 16     |       | maybe kussmaul like respiration                                                                                              |
+| resp 17     |       | not good                                                                                                                     |
+| resp 18     |       | from relatively normal with higher amplitude to low amplitude high frequency between 193k-235k                               |
+| resp 19     |       | not good                                                                                                                     |
+| resp 20     |       | low amplitude, high frequency for the most part                                                                              |
+| resp 21     |       | normal amplitude, high frequency for the most part                                                                           |
+| resp 22     |       | not good, but what could be a cheyne stoke from 100k to 170k                                                                 |
+| resp 23     |       | not good                                                                                                                     |
+| resp 24     |       | not good                                                                                                                     |
+| resp 25     |       | low amplitude from 30k-280k                                                                                                  |
+| resp 26     |       | low amplitude, high frequency from 20k-260k                                                                                  |
+| resp 27     |       | low amplitude, high frequency from 80k-the end                                                                               |
+| resp 28     |       |                                                                                                                              |
+| resp 29     |       |                                                                                                                              |
+| resp 30     |       |                                                                                                                              |
+| resp 31     |       |                                                                                                                              |
+| resp 32     |       |                                                                                                                              |
+| resp 33     |       |                                                                                                                              |
+| resp 34     |       |                                                                                                                              |
+| resp 35     |       |                                                                                                                              |
+| resp 36     |       |                                                                                                                              |
+| resp 37     |       |                                                                                                                              |
+| resp 38     |       |                                                                                                                              |
+| resp 39     |       |                                                                                                                              |
+| resp 40     |       |                                                                                                                              |

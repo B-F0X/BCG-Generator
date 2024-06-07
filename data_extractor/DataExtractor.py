@@ -3,6 +3,7 @@ from os import walk
 
 import numpy as np
 import pandas as pd
+from matplotlib import pyplot as plt
 from sklearn.preprocessing import MinMaxScaler
 
 from variables import variables
@@ -76,6 +77,50 @@ class DataExtractor:
             data_of_file.append(data_array[i:i + values_per_minute])
             i += 400
         return data_of_file
+
+    def show_respiration_patterns(self):
+        folder = variables.path_to_respiration_patterns
+        filenames = next(walk(folder), (None, None, []))[2]
+        for data_file in filenames:
+            data_table = pd.read_csv(folder + data_file)
+            data_array = data_table['data'].to_numpy()
+            time_in_sec = int(len(data_array) / 1000)
+            time = np.linspace(0, time_in_sec, len(data_array))
+            print(f"{data_file}: {time_in_sec} seconds")
+            plt.plot(time, data_array)
+            plt.title(data_file)
+            plt.xlabel("Time (seconds)")
+            plt.ylabel("Amplitude")
+            plt.grid(True)
+            plt.show()
+
+    def show_respiration_pattern(self, filename):
+        folder = variables.path_to_respiration_patterns
+        filenames = next(walk(folder), (None, None, []))[2]
+        data_table = pd.read_csv(folder + filename)
+        data_array = data_table['data'].to_numpy()
+        time_in_sec = int(len(data_array) / 1000)
+        time = np.linspace(0, time_in_sec, len(data_array))
+        print(f"{filename}: {time_in_sec} seconds")
+        plt.plot(time, data_array)
+        plt.title(filename)
+        plt.xlabel("Time (seconds)")
+        plt.ylabel("Amplitude")
+        plt.grid(True)
+        plt.show()
+
+    def save_respiration_pattern(self, data, name):
+        folder = variables.path_to_created_respiration_patterns
+        table = {'resp': data.get()}
+        df = pd.DataFrame(table)
+        df.to_csv(folder + name + '.csv', index=False)
+
+
+    def save_connected_wave(self, data, name):
+        folder = variables.path_to_created_respiration_patterns
+        table = {'resp': data}
+        df = pd.DataFrame(table)
+        df.to_csv(folder + name + '.csv', index=False)
 
     ####### Helper Functions ##############
 

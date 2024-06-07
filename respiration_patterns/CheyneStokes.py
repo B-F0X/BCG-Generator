@@ -14,7 +14,7 @@ matplotlib.use('TkAgg')
 
 
 class CheyneStokes(RespirationPattern):
-    def __init__(self, respiration_rate=15, smoothness=200, amplitude=1.0, sensor_frequency=1000,
+    def __init__(self, respiration_rate=15, smoothness=700, amplitude=1.0, sensor_frequency=1000,
                  length_of_cheyne_stokes=40, length_of_apnea=20, number_of_cheyen_stokes=2):
         self.length_of_cheyne_stokes = length_of_cheyne_stokes
         self.length_of_apnea = length_of_apnea
